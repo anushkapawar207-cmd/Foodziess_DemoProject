@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Tells the browser that this is an HTML5 document -->
+    <meta charset="UTF-8">
+
+    <!-- Makes the website responsive on different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Name shown on the browser tab -->
+    <title>Foodiziess</title>
+
+    <!-- Connects our HTML file to the CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVIGATION BAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <!-- Website Logo -->
+        <div class="logo">
+            Foodiziess
+        </div>
+
+
+        <!-- Navigation Links -->
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <!-- =========================
+                 CATEGORIES DROPDOWN
+            ========================== -->
+
+            <div class="category-dropdown">
+
+                <button class="category-button">
+                    Categories ▾
+                </button>
+
+
+                <div class="dropdown-menu">
+
+
+                    <!-- =========================
+                         MEAL
+                    ========================== -->
+
+                    <div class="dropdown-section">
+
+                        <h4>Meal</h4>
+
+                        <a href="index.html?meal=Breakfast">
+                            Breakfast
+                        </a>
+
+                        <a href="index.html?meal=Lunch">
+                            Lunch
+                        </a>
+
+                        <a href="index.html?meal=Dinner">
+                            Dinner
+                        </a>
+
+                        <a href="index.html?meal=Snacks">
+                            Snacks
+                        </a>
+
+                    </div>
+
+
+                    <!-- =========================
+                         TASTE
+                    ========================== -->
+
+                    <div class="dropdown-section">
+
+                        <h4>Taste</h4>
+
+                        <a href="index.html?taste=Sweet">
+                            Sweet
+                        </a>
+
+                        <a href="index.html?taste=Spicy">
+                            Spicy
+                        </a>
+
+                        <a href="index.html?taste=Tangy">
+                            Tangy
+                        </a>
+
+                    </div>
+
+
+                    <!-- =========================
+                         CUISINE
+                    ========================== -->
+
+                    <div class="dropdown-section">
+
+                        <h4>Cuisine</h4>
+
+                        <a href="index.html?cuisine=Indian">
+                            Indian
+                        </a>
+
+                        <a href="index.html?cuisine=Italian">
+                            Italian
+                        </a>
+
+                        <a href="index.html?cuisine=Chinese">
+                            Chinese
+                        </a>
+
+                        <a href="index.html?cuisine=Korean">
+                            Korean
+                        </a>
+
+                        <a href="index.html?cuisine=Mexican">
+                            Mexican
+                        </a>
+
+                    </div>
+
+
+                    <!-- =========================
+                         DIET
+                    ========================== -->
+
+                    <div class="dropdown-section">
+
+                        <h4>Diet</h4>
+
+                        <a href="index.html?diet=Vegan">
+                            Vegan
+                        </a>
+
+                        <a href="index.html?diet=Vegetarian">
+                            Vegetarian
+                        </a>
+
+                        <a href="index.html?diet=Non-Vegetarian">
+                            Non-Vegetarian
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- Explore -->
+            <a href="home.html">
+                Explore
+            </a>
+
+
+            <!-- About -->
+            <a href="#about">
+                About
+            </a>
+
+        </div>
+
+
+        <!-- =========================
+             LOGIN AND SIGNUP BUTTONS
+        ========================== -->
+
+        <div class="nav-buttons" id="nav-buttons">
+
+            <a href="login.html">
+                <button>Login</button>
+            </a>
+
+            <a href="signup.html">
+                <button>Sign Up</button>
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-heading">
+                WELCOME TO FOODIZIESS
+            </p>
+
+
+            <h1>
+                Find recipes to all
+                <br>
+                <span>yum food you crave.</span>
+            </h1>
+
+
+            <p class="hero-description">
+                Discover delicious recipes from around the world
+                based on your taste, mood and cravings.
+            </p>
+
+
+            <!-- =========================
+                 SEARCH BAR
+            ========================== -->
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search for recipes..."
+                >
+
+                <button id="search-button">
+                    Search
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         POPULAR RECIPES
+    ========================== -->
+
+    <section class="section">
+
+        <h2>
+            Popular Recipes
+        </h2>
+
+
+        <div
+            class="recipe-grid"
+            id="recipe-container"
+        >
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CATEGORY SECTION
+    ========================== -->
+
+    <section class="section">
+
+        <h2>
+            Explore Categories
+        </h2>
+
+
+        <div class="category-grid">
+
+
+            <div class="category-card">
+                Breakfast
+            </div>
+
+
+            <div class="category-card">
+                Lunch
+            </div>
+
+
+            <div class="category-card">
+                Dinner
+            </div>
+
+
+            <div class="category-card">
+                Snacks
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT SECTION
+    ========================== -->
+
+    <section
+        class="about"
+        id="about"
+    >
+
+        <h2>
+            About Foodiziess
+        </h2>
+
+
+        <p>
+            Foodiziess helps you discover delicious recipes
+            based on your taste, meal, cuisine and dietary
+            preferences.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Foodiziess. All rights reserved.
+        </p>
+
+
+        <p>
+            <a href="admin/admin-login.html">
+                Admin Login
+            </a>
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/recipes.js"></script>
+
+    <script src="js/auth.js"></script>
+
+
+</body>
+
+</html>

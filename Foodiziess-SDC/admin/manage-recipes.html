@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Recipes - Foodiziess</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+
+<body class="admin-page">
+
+
+    <!-- =========================
+         ADMIN NAVBAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Foodiziess Admin
+        </div>
+
+
+        <div class="nav-buttons">
+
+            <a href="dashboard.html">
+                <button>Dashboard</button>
+            </a>
+
+            <button id="admin-logout">
+                Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         MANAGE RECIPES
+    ========================== -->
+
+    <section class="section">
+
+        <h1>
+            Manage Recipes
+        </h1>
+
+        <p>
+            Add, edit and delete recipes.
+        </p>
+
+
+
+        <!-- =========================
+             ADD RECIPE
+        ========================== -->
+
+        <div class="auth-card">
+
+            <h2>
+                Add New Recipe
+            </h2>
+
+
+            <form id="recipe-form">
+
+
+                <!-- RECIPE NAME -->
+
+                <div class="form-group">
+
+                    <label for="recipe-name">
+                        Recipe Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="recipe-name"
+                        placeholder="Enter recipe name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- MEAL -->
+
+                <div class="form-group">
+
+                    <label for="recipe-meal">
+                        Meal
+                    </label>
+
+                    <select id="recipe-meal" required>
+
+                        <option value="">
+                            Select Meal
+                        </option>
+
+                        <option value="Breakfast">
+                            Breakfast
+                        </option>
+
+                        <option value="Lunch">
+                            Lunch
+                        </option>
+
+                        <option value="Dinner">
+                            Dinner
+                        </option>
+
+                        <option value="Snacks">
+                            Snacks
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- TASTE -->
+
+                <div class="form-group">
+
+                    <label for="recipe-taste">
+                        Taste
+                    </label>
+
+                    <select id="recipe-taste" required>
+
+                        <option value="">
+                            Select Taste
+                        </option>
+
+                        <option value="Sweet">
+                            Sweet
+                        </option>
+
+                        <option value="Spicy">
+                            Spicy
+                        </option>
+
+                        <option value="Tangy">
+                            Tangy
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- CUISINE -->
+
+                <div class="form-group">
+
+                    <label for="recipe-cuisine">
+                        Cuisine
+                    </label>
+
+                    <select id="recipe-cuisine" required>
+
+                        <option value="">
+                            Select Cuisine
+                        </option>
+
+                        <option value="Indian">
+                            Indian
+                        </option>
+
+                        <option value="Italian">
+                            Italian
+                        </option>
+
+                        <option value="Chinese">
+                            Chinese
+                        </option>
+
+                        <option value="Korean">
+                            Korean
+                        </option>
+
+                        <option value="Mexican">
+                            Mexican
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- DIET -->
+
+                <div class="form-group">
+
+                    <label for="recipe-diet">
+                        Diet
+                    </label>
+
+                    <select id="recipe-diet" required>
+
+                        <option value="">
+                            Select Diet
+                        </option>
+
+                        <option value="Vegan">
+                            Vegan
+                        </option>
+
+                        <option value="Vegetarian">
+                            Vegetarian
+                        </option>
+
+                        <option value="Non-Vegetarian">
+                            Non-Vegetarian
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- IMAGE -->
+
+                <div class="form-group">
+
+                    <label for="recipe-image">
+                        Image Path
+                    </label>
+
+                    <input
+                        type="text"
+                        id="recipe-image"
+                        placeholder="images/recipe.jpg"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- INGREDIENTS -->
+
+                <div class="form-group">
+
+                    <label for="recipe-ingredients">
+                        Ingredients
+                    </label>
+
+                    <textarea
+                        id="recipe-ingredients"
+                        placeholder="Enter ingredients separated by commas"
+                        rows="5"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- INSTRUCTIONS -->
+
+                <div class="form-group">
+
+                    <label for="recipe-instructions">
+                        Instructions
+                    </label>
+
+                    <textarea
+                        id="recipe-instructions"
+                        placeholder="Enter instructions separated by steps"
+                        rows="6"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- POPULAR CHECKBOX -->
+
+                <div class="popular-checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="recipe-popular"
+                    >
+
+                    <label for="recipe-popular">
+                        Show in Popular Recipes
+                    </label>
+
+                </div>
+
+
+
+                <!-- ADD BUTTON -->
+
+                <button
+                    type="submit"
+                    class="auth-button"
+                >
+                    Add Recipe
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+
+        <!-- =========================
+             EDIT RECIPE
+        ========================== -->
+
+        <div
+            class="auth-card"
+            id="edit-recipe-card"
+            style="display: none;"
+        >
+
+            <h2>
+                Edit Recipe
+            </h2>
+
+
+            <form id="edit-recipe-form">
+
+
+                <!-- RECIPE NAME -->
+
+                <div class="form-group">
+
+                    <label for="edit-recipe-name">
+                        Recipe Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="edit-recipe-name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- MEAL -->
+
+                <div class="form-group">
+
+                    <label for="edit-recipe-meal">
+                        Meal
+                    </label>
+
+                    <select
+                        id="edit-recipe-meal"
+                        required
+                    >
+
+                        <option value="Breakfast">
+                            Breakfast
+                        </option>
+
+                        <option value="Lunch">
+                            Lunch
+                        </option>
+
+                        <option value="Dinner">
+                            Dinner
+                        </option>
+
+                        <option value="Snacks">
+                            Snacks
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- TASTE -->
+
+                <div class="form-group">
+
+                    <label for="edit-recipe-taste">
+                        Taste
+                    </label>
+
+                    <select
+                        id="edit-recipe-taste"
+                        required
+                    >
+
+                        <option value="Sweet">
+                            Sweet
+                        </option>
+
+                        <option value="Spicy">
+                            Spicy
+                        </option>
+
+                        <option value="Tangy">
+                            Tangy
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- CUISINE -->
+
+                <div class="form-group">
+
+                    <label for="edit-recipe-cuisine">
+                        Cuisine
+                    </label>
+
+                    <select
+                        id="edit-recipe-cuisine"
+                        required
+                    >
+
+                        <option value="Indian">
+                            Indian
+                        </option>
+
+                        <option value="Italian">
+                            Italian
+                        </option>
+
+                        <option value="Chinese">
+                            Chinese
+                        </option>
+
+                        <option value="Korean">
+                            Korean
+                        </option>
+
+                        <option value="Mexican">
+                            Mexican
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- DIET -->
+
+                <div class="form-group">
+
+                    <label for="edit-recipe-diet">
+                        Diet
+                    </label>
+
+                    <select
+                        id="edit-recipe-diet"
+                        required
+                    >
+
+                        <option value="Vegan">
+                            Vegan
+                        </option>
+
+                        <option value="Vegetarian">
+                            Vegetarian
+                        </option>
+
+                        <option value="Non-Vegetarian">
+                            Non-Vegetarian
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- IMAGE -->
+
+                <div class="form-group">
+
+                    <label for="edit-recipe-image">
+                        Image Path
+                    </label>
+
+                    <input
+                        type="text"
+                        id="edit-recipe-image"
+                        placeholder="images/recipe.jpg"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- INGREDIENTS -->
+
+                <div class="form-group">
+
+                    <label for="edit-recipe-ingredients">
+                        Ingredients
+                    </label>
+
+                    <textarea
+                        id="edit-recipe-ingredients"
+                        placeholder="Enter ingredients separated by commas"
+                        rows="5"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- INSTRUCTIONS -->
+
+                <div class="form-group">
+
+                    <label for="edit-recipe-instructions">
+                        Instructions
+                    </label>
+
+                    <textarea
+                        id="edit-recipe-instructions"
+                        placeholder="Enter instructions separated by steps"
+                        rows="6"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- POPULAR CHECKBOX -->
+
+                <div class="popular-checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="edit-recipe-popular"
+                    >
+
+                    <label for="edit-recipe-popular">
+                        Show in Popular Recipes
+                    </label>
+
+                </div>
+
+
+
+                <!-- UPDATE BUTTON -->
+
+                <button
+                    type="submit"
+                    class="auth-button"
+                >
+                    Update Recipe
+                </button>
+
+
+
+                <!-- CANCEL BUTTON -->
+
+                <button
+                    type="button"
+                    id="cancel-edit"
+                    class="auth-button"
+                    style="margin-top: 10px;"
+                >
+                    Cancel
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+
+        <!-- =========================
+             EXISTING RECIPES
+        ========================== -->
+
+        <div class="section">
+
+            <h2>
+                Existing Recipes
+            </h2>
+
+
+            <div id="admin-recipe-container"></div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="../js/auth.js"></script>
+
+    <script src="../js/admin.js"></script>
+
+
+</body>
+
+</html>

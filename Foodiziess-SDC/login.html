@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Foodiziess</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =========================
+           LOGIN PAGE
+        ========================== */
+
+        .auth-page {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+
+            background:
+                radial-gradient(circle at top left, #f3ddff, transparent 40%),
+                radial-gradient(circle at bottom right, #ffd9ed, transparent 40%),
+                #faf7fc;
+        }
+
+
+        .auth-wrapper {
+            width: 100%;
+            max-width: 950px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: white;
+
+            border-radius: 30px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px rgba(80, 35, 100, 0.15);
+        }
+
+
+        /* =========================
+           LEFT FOOD PANEL
+        ========================== */
+
+        .auth-visual {
+            padding: 55px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #7b3f98,
+                    #a85bb8,
+                    #d477b7
+                );
+
+            color: white;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .auth-visual::before {
+            content: "🍓";
+            position: absolute;
+            font-size: 130px;
+            right: -25px;
+            top: -25px;
+            opacity: 0.15;
+        }
+
+
+        .auth-visual::after {
+            content: "🍰";
+            position: absolute;
+            font-size: 120px;
+            left: -25px;
+            bottom: -20px;
+            opacity: 0.15;
+        }
+
+
+        .auth-visual h2 {
+            font-size: 42px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+
+        .auth-visual h2 span {
+            color: #ffe4f3;
+        }
+
+
+        .auth-visual p {
+            font-size: 17px;
+            line-height: 1.7;
+            max-width: 380px;
+            opacity: 0.92;
+            position: relative;
+            z-index: 2;
+        }
+
+
+        .food-icons {
+            display: flex;
+            gap: 18px;
+            margin-top: 35px;
+            font-size: 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================
+           FORM SIDE
+        ========================== */
+
+        .auth-form-side {
+            padding: 55px 50px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        .auth-form-side h1 {
+            font-size: 32px;
+            color: #4b245f;
+            margin-bottom: 8px;
+        }
+
+
+        .auth-subtitle {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+
+        .pretty-form .form-group {
+            margin-bottom: 20px;
+        }
+
+
+        .pretty-form label {
+            display: block;
+            margin-bottom: 8px;
+
+            font-weight: 600;
+            color: #4c3455;
+        }
+
+
+        .pretty-form input {
+            width: 100%;
+            padding: 14px 16px;
+
+            border: 1px solid #e1d6e7;
+            border-radius: 13px;
+
+            background: #fcf9fd;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.25s;
+
+            box-sizing: border-box;
+        }
+
+
+        .pretty-form input:focus {
+            border-color: #9a52ad;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px rgba(154, 82, 173, 0.1);
+        }
+
+
+        .pretty-form input::placeholder {
+            color: #aaa;
+        }
+
+
+        .pretty-auth-button {
+            width: 100%;
+
+            border: none;
+
+            padding: 15px;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7b3f98,
+                    #b05ab8
+                );
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+
+            box-shadow:
+                0 8px 20px rgba(123, 63, 152, 0.22);
+        }
+
+
+        .pretty-auth-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(123, 63, 152, 0.3);
+        }
+
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 25px;
+            color: #777;
+        }
+
+
+        .auth-switch a {
+            color: #8b479e;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+
+        .auth-switch a:hover {
+            text-decoration: underline;
+        }
+
+
+        #login-message {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 750px) {
+
+            .auth-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+
+            .auth-visual {
+                padding: 40px;
+                text-align: center;
+            }
+
+
+            .auth-visual h2 {
+                font-size: 32px;
+            }
+
+
+            .auth-visual p {
+                margin: auto;
+            }
+
+
+            .food-icons {
+                justify-content: center;
+            }
+
+
+            .auth-form-side {
+                padding: 40px 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Foodiziess
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="home.html">
+                Explore
+            </a>
+
+            <a href="index.html#about">
+                About
+            </a>
+
+        </div>
+
+
+        <div class="nav-buttons">
+
+            <a href="login.html">
+                <button>Login</button>
+            </a>
+
+            <a href="signup.html">
+                <button>Sign Up</button>
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         LOGIN
+    ========================== -->
+
+    <section class="auth-page">
+
+        <div class="auth-wrapper">
+
+
+            <!-- LEFT SIDE -->
+
+            <div class="auth-visual">
+
+                <h2>
+                    Welcome back to
+                    <span>Foodiziess!</span>
+                </h2>
+
+                <p>
+                    Your next delicious meal is just a login away.
+                    Discover recipes, explore new flavours and
+                    find something you'll love today.
+                </p>
+
+
+                <div class="food-icons">
+
+                    <span>🍕</span>
+                    <span>🍝</span>
+                    <span>🥗</span>
+                    <span>🍰</span>
+                    <span>🥭</span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RIGHT SIDE -->
+
+            <div class="auth-form-side">
+
+                <h1>
+                    Welcome Back 👋
+                </h1>
+
+                <p class="auth-subtitle">
+                    Login to continue exploring delicious recipes.
+                </p>
+
+
+                <form
+                    id="login-form"
+                    class="pretty-form"
+                >
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="pretty-auth-button"
+                    >
+                        Login to Foodiziess ✨
+                    </button>
+
+
+                    <p id="login-message"></p>
+
+                </form>
+
+
+
+                <p class="auth-switch">
+
+                    Don't have an account?
+
+                    <a href="signup.html">
+                        Sign Up
+                    </a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <script src="js/auth.js"></script>
+
+</body>
+
+</html>

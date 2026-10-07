@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe | Foodiziess</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="recipe-page"></body>
+
+    <!-- ===============================
+         NAVBAR
+    ================================ -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Foodiziess
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <div class="dropdown">
+
+                <a href="#">Categories ▾</a>
+
+                <div class="dropdown-content">
+
+                    <div class="dropdown-section">
+
+                        <h4>Meal</h4>
+
+                        <a href="index.html?meal=Breakfast">
+                            Breakfast
+                        </a>
+
+                        <a href="index.html?meal=Lunch">
+                            Lunch
+                        </a>
+
+                        <a href="index.html?meal=Dinner">
+                            Dinner
+                        </a>
+
+                        <a href="index.html?meal=Snacks">
+                            Snacks
+                        </a>
+
+                    </div>
+
+                    <div class="dropdown-section">
+
+                        <h4>Taste</h4>
+
+                        <a href="index.html?taste=Sweet">
+                            Sweet
+                        </a>
+
+                        <a href="index.html?taste=Spicy">
+                            Spicy
+                        </a>
+
+                        <a href="index.html?taste=Tangy">
+                            Tangy
+                        </a>
+
+                    </div>
+
+                    <div class="dropdown-section">
+
+                        <h4>Cuisine</h4>
+
+                        <a href="index.html?cuisine=Indian">
+                            Indian
+                        </a>
+
+                        <a href="index.html?cuisine=Italian">
+                            Italian
+                        </a>
+
+                        <a href="index.html?cuisine=Chinese">
+                            Chinese
+                        </a>
+
+                        <a href="index.html?cuisine=Korean">
+                            Korean
+                        </a>
+
+                        <a href="index.html?cuisine=Mexican">
+                            Mexican
+                        </a>
+
+                    </div>
+
+                    <div class="dropdown-section">
+
+                        <h4>Diet</h4>
+
+                        <a href="index.html?diet=Vegan">
+                            Vegan
+                        </a>
+
+                        <a href="index.html?diet=Vegetarian">
+                            Vegetarian
+                        </a>
+
+                        <a href="index.html?diet=Non-Vegetarian">
+                            Non-Vegetarian
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a href="home.html">Explore</a>
+
+            <a href="index.html#about">
+                About
+            </a>
+
+        </div>
+
+        <div id="nav-buttons"></div>
+
+    </nav>
+
+
+    <!-- ===============================
+         RECIPE DETAILS
+    ================================ -->
+
+    <main class="recipe-detail-container">
+
+        <div id="recipe-detail">
+
+            <!-- JavaScript will insert the recipe here -->
+
+        </div>
+
+    </main>
+
+
+    <!-- ===============================
+         JAVASCRIPT
+    ================================ -->
+
+    <script src="js/auth.js"></script>
+
+    <script>
+
+        // Get recipe ID from URL
+        const urlParams =
+            new URLSearchParams(window.location.search);
+
+        const recipeId =
+            Number(urlParams.get("id"));
+
+
+        // Get recipes from Local Storage
+        const recipes =
+            JSON.parse(localStorage.getItem("recipes")) || [];
+
+
+        // Find selected recipe
+        const recipe =
+            recipes.find(function(recipe) {
+
+                return recipe.id === recipeId;
+
+            });
+
+
+        const recipeDetail =
+            document.getElementById("recipe-detail");
+
+
+        // If recipe doesn't exist
+        if (!recipe) {
+
+            recipeDetail.innerHTML = `
+
+                <div class="recipe-not-found">
+
+                    <h2>Recipe not found 😭</h2>
+
+                    <p>
+                        Sorry, we couldn't find this recipe.
+                    </p>
+
+                    <a href="index.html">
+                        ← Back to Home
+                    </a>
+
+                </div>
+
+            `;
+
+        }
+
+        else {
+
+            // ===============================
+            // INGREDIENTS
+            // ===============================
+
+            let ingredientsHTML = "";
+
+            if (recipe.ingredients) {
+
+                const ingredients =
+                    recipe.ingredients
+                        .split(/\r?\n|,/)
+                        .map(item => item.trim())
+                        .filter(item => item !== "");
+
+                ingredientsHTML = ingredients
+                    .map(function(ingredient) {
+
+                        return `
+                            <li>${ingredient}</li>
+                        `;
+
+                    })
+                    .join("");
+
+            }
+
+            if (!ingredientsHTML) {
+
+                ingredientsHTML = `
+                    <li>
+                        Ingredients have not been added yet.
+                    </li>
+                `;
+
+            }
+
+
+            // ===============================
+            // INSTRUCTIONS
+            // ===============================
+
+            let instructionsHTML = "";
+
+            if (recipe.instructions) {
+
+                const instructions =
+                    recipe.instructions
+                        .split(/\r?\n/)
+                        .map(item => item.trim())
+                        .filter(item => item !== "");
+
+                instructionsHTML = instructions
+                    .map(function(step) {
+
+                        return `
+                            <li>${step}</li>
+                        `;
+
+                    })
+                    .join("");
+
+            }
+
+            if (!instructionsHTML) {
+
+                instructionsHTML = `
+                    <li>
+                        Instructions have not been added yet.
+                    </li>
+                `;
+
+            }
+
+
+            // ===============================
+            // DISPLAY RECIPE
+            // ===============================
+
+            recipeDetail.innerHTML = `
+
+                <div class="recipe-detail-card">
+
+                    <div class="recipe-detail-image">
+
+                        <img
+                            src="${recipe.image}"
+                            alt="${recipe.name}"
+                        >
+
+                    </div>
+
+
+                    <div class="recipe-detail-content">
+
+                        <h1>
+                            ${recipe.name}
+                        </h1>
+
+
+                        <div class="recipe-meta">
+
+                            <span>
+                                ${recipe.meal}
+                            </span>
+
+                            <span>
+                                ${recipe.taste}
+                            </span>
+
+                            <span>
+                                ${recipe.cuisine}
+                            </span>
+
+                            <span>
+                                ${recipe.diet}
+                            </span>
+
+                        </div>
+
+
+                        <section class="recipe-section">
+
+                            <h2>
+                                🥘 Ingredients
+                            </h2>
+
+                            <ul class="ingredients-list">
+
+                                ${ingredientsHTML}
+
+                            </ul>
+
+                        </section>
+
+
+                        <section class="recipe-section">
+
+                            <h2>
+                                👩‍🍳 Instructions
+                            </h2>
+
+                            <ol class="instructions-list">
+
+                                ${instructionsHTML}
+
+                            </ol>
+
+                        </section>
+
+
+                        <a
+                            href="index.html"
+                            class="back-button"
+                        >
+                            ← Back to Recipes
+                        </a>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
